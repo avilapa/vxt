@@ -1,0 +1,884 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{89AF369E-F58E-B539-FEA6-40106A051C9B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps">
+      <UniqueIdentifier>{F1A1957C-DDD8-960D-86C5-7C1072DB120F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\glm">
+      <UniqueIdentifier>{CD69BB31-B936-163D-E24F-04E5CE7B4BCB}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\glm\detail">
+      <UniqueIdentifier>{DC66F95C-48F2-6621-5103-EA15BD0DC321}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\glm\ext">
+      <UniqueIdentifier>{BAB8F911-A61B-89B6-4FA1-C16C3BE35439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\glm\gtc">
+      <UniqueIdentifier>{A7C0F911-9323-89B6-3CA9-C16C28EB5439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\glm\gtx">
+      <UniqueIdentifier>{BCC0F911-A823-89B6-51A9-C16C3DEB5439}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deps\glm\simd">
+      <UniqueIdentifier>{F63C3851-62FD-B387-2B38-FD0497B7F863}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\deps\glm\desktop.ini">
+      <Filter>deps\glm</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\desktop.ini">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_common.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_common_simd.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_exponential.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_exponential_simd.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_geometric.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_geometric_simd.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_integer.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_integer_simd.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_matrix.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_matrix_simd.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_packing.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_packing_simd.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_trigonometric.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_trigonometric_simd.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_vector_relational.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\func_vector_relational_simd.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_gentype.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_half.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_mat.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_mat2x2.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_mat2x3.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_mat2x4.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_mat3x2.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_mat3x3.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_mat3x4.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_mat4x2.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_mat4x3.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_mat4x4.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_mat4x4_simd.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_vec.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_vec1.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_vec2.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_vec3.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_vec4.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\detail\type_vec4_simd.inl">
+      <Filter>deps\glm\detail</Filter>
+    </None>
+    <None Include="..\..\deps\glm\ext\desktop.ini">
+      <Filter>deps\glm\ext</Filter>
+    </None>
+    <None Include="..\..\deps\glm\ext\vec1.inl">
+      <Filter>deps\glm\ext</Filter>
+    </None>
+    <None Include="..\..\deps\glm\ext\vector_relational.inl">
+      <Filter>deps\glm\ext</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\bitfield.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\color_space.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\constants.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\desktop.ini">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\epsilon.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\integer.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\matrix_access.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\matrix_inverse.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\matrix_transform.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\noise.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\packing.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\quaternion.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\quaternion_simd.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\random.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\reciprocal.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\round.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\type_precision.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\type_ptr.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\ulp.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtc\vec1.inl">
+      <Filter>deps\glm\gtc</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\associated_min_max.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\bit.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\closest_point.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\color_encoding.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\color_space.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\color_space_YCoCg.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\common.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\compatibility.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\component_wise.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\desktop.ini">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\dual_quaternion.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\euler_angles.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\extend.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\extended_min_max.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\exterior_product.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\fast_exponential.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\fast_square_root.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\fast_trigonometry.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\float_notmalize.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\functions.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\gradient_paint.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\handed_coordinate_space.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\hash.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\integer.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\intersect.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\io.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\log_base.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\matrix_cross_product.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\matrix_decompose.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\matrix_factorisation.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\matrix_interpolation.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\matrix_major_storage.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\matrix_operation.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\matrix_query.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\matrix_transform_2d.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\mixed_product.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\norm.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\normal.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\normalize_dot.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\number_precision.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\optimum_pow.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\orthonormalize.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\perpendicular.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\polar_coordinates.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\projection.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\quaternion.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\raw_data.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\rotate_normalized_axis.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\rotate_vector.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\scalar_relational.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\spline.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\std_based_type.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\string_cast.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\texture.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\transform.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\transform2.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\type_aligned.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\type_trait.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\vector_angle.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\vector_query.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\gtx\wrap.inl">
+      <Filter>deps\glm\gtx</Filter>
+    </None>
+    <None Include="..\..\deps\glm\simd\desktop.ini">
+      <Filter>deps\glm\simd</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\application.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\bitmap.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\camera.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\hitable.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\hitable_list.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\material.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\ray.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\types.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\common.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\exponential.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\ext.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\fwd.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\geometric.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\glm.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\integer.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\mat2x2.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\mat2x3.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\mat2x4.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\mat3x2.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\mat3x3.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\mat3x4.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\mat4x2.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\mat4x3.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\mat4x4.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\matrix.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\packing.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\trigonometric.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\vec2.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\vec3.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\vec4.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\vector_relational.hpp">
+      <Filter>deps\glm</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\compute_vector_relational.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\qualifier.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\setup.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_float.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_gentype.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_half.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_int.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_mat.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_mat2x2.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_mat2x3.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_mat2x4.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_mat3x2.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_mat3x3.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_mat3x4.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_mat4x2.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_mat4x3.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_mat4x4.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_vec.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_vec1.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_vec2.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_vec3.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\type_vec4.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\_features.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\_fixes.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\_noise.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\_swizzle.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\_swizzle_func.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\detail\_vectorize.hpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\ext\vec1.hpp">
+      <Filter>deps\glm\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\ext\vector_relational.hpp">
+      <Filter>deps\glm\ext</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\bitfield.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\color_space.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\constants.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\epsilon.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\integer.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\matrix_access.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\matrix_integer.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\matrix_inverse.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\matrix_transform.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\noise.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\packing.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\quaternion.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\random.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\reciprocal.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\round.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\type_aligned.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\type_precision.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\type_ptr.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\ulp.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtc\vec1.hpp">
+      <Filter>deps\glm\gtc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\associated_min_max.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\bit.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\closest_point.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\color_encoding.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\color_space.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\color_space_YCoCg.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\common.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\compatibility.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\component_wise.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\dual_quaternion.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\euler_angles.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\extend.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\extended_min_max.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\exterior_product.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\fast_exponential.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\fast_square_root.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\fast_trigonometry.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\functions.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\gradient_paint.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\handed_coordinate_space.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\hash.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\integer.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\intersect.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\io.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\log_base.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\matrix_cross_product.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\matrix_decompose.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\matrix_factorisation.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\matrix_interpolation.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\matrix_major_storage.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\matrix_operation.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\matrix_query.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\matrix_transform_2d.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\mixed_product.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\norm.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\normal.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\normalize_dot.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\number_precision.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\optimum_pow.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\orthonormalize.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\perpendicular.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\polar_coordinates.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\projection.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\quaternion.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\range.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\raw_data.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\rotate_normalized_axis.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\rotate_vector.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\scalar_multiplication.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\scalar_relational.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\spline.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\std_based_type.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\string_cast.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\texture.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\transform.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\transform2.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\type_aligned.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\type_trait.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\vector_angle.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\vector_query.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\vec_swizzle.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\gtx\wrap.hpp">
+      <Filter>deps\glm\gtx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\simd\common.h">
+      <Filter>deps\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\simd\exponential.h">
+      <Filter>deps\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\simd\geometric.h">
+      <Filter>deps\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\simd\integer.h">
+      <Filter>deps\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\simd\matrix.h">
+      <Filter>deps\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\simd\packing.h">
+      <Filter>deps\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\simd\platform.h">
+      <Filter>deps\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\simd\trigonometric.h">
+      <Filter>deps\glm\simd</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\deps\glm\simd\vector_relational.h">
+      <Filter>deps\glm\simd</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\application.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\bitmap.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\camera.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hitable.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\hitable_list.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\material.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\deps\glm\detail\dummy.cpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\deps\glm\detail\glm.cpp">
+      <Filter>deps\glm\detail</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
