@@ -1,6 +1,6 @@
 ![Random Scene](/assets/readme/output_final_100spp.jpg)
 
-_version 0.1.0_
+_version 0.0.1_
 
 # What is vxt?
 
