@@ -1,5 +1,7 @@
 ![Random Scene](/assets/readme/output_final_100spp.jpg)
 
+_version 0.1.0_
+
 # What is vxt?
 
 __vxt__ is a path tracer renderer written in C++, based on the book Ray Tracing in One Weekend by Peter Shirley. The purpose of this project is purely academic as this is my first contact with path tracing techniques! So far so fun :^) 
