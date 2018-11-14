@@ -24,23 +24,19 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../../include/core/application.h"
+#include "../core/types.h"
 
 /**
-* \file main.h
+* \file bitmap.h
 *
 * \author Victor Avila (avilapa.github.io)
 *
-* \brief Ray tracing in a Weekend - by Peter Shirley.
+* \brief Bitmap utility functions.
 *
 */
-namespace vxt 
+namespace vxt
 {
-
-  class Main : public Application
-  {
-  public:
-    virtual void init() override;
-  };
+  
+  void WriteBitmap(const char* output_file, uint32 width, uint32 height, uint32 bytes_per_pixel, const uint8* pixels);
 
 } /* end of vxt namespace */

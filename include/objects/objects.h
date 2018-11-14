@@ -24,32 +24,9 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "types.h"
-
-/**
-* \file ray.h
-*
-* \author Victor Avila (avilapa.github.io)
-*
-* \brief Ray class.
-*
-*/
-namespace vxt
-{
-
-  class Ray
-  {
-  public:
-
-    Ray() {};
-    Ray(vec3 a, vec3 b) : A(a), B(b) {}
-    vec3 origin() const { return A; }
-    vec3 direction() const { return B; }
-    vec3 point_param(float t) const { return A + t*B; }
-
-  private:
-    vec3 A;
-    vec3 B;
-  };
-
-} /* end of vxt namespace */
+#include "volume.h"
+#include "sphere.h"
+#include "rect.h"
+#include "aabb.h"
+#include "box.h"
+#include "bvh.h"

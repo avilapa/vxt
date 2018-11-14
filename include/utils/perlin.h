@@ -24,29 +24,52 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "hitable.h"
+#include "../core/types.h"
 
 /**
-* \file hitable_list.h
+* \file perlin.h
 *
 * \author Victor Avila (avilapa.github.io)
 *
-* \brief .
+* \brief Bitmap utility functions.
 *
 */
 namespace vxt
 {
 
-  class HitableList : public Hitable
+  class PerlinNoise
   {
   public:
-    HitableList() {}
-    HitableList(Hitable **l, uint32 n) { list = l, list_size = n; }
+    float noise(const vec3& p) const;
+    float turb(const vec3& p, int depth = 7) const;
 
-    virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const;
-
-    Hitable **list;
-    uint32 list_size;
+    static vec3 *randomVec_;
+    static int *perm_x_;
+    static int *perm_y_;
+    static int *perm_z_;
   };
+ 
+  inline float perlinInterp(vec3 c[2][2][2], float u, float v, float w)
+  {
+    float uu = u * u * (3 - 2 * u);
+    float vv = v * v * (3 - 2 * v);
+    float ww = w * w * (3 - 2 * w);
+    float accum = 0.0f;
+    for (uint32 i = 0; i < 2; ++i)
+    {
+      for (uint32 j = 0; j < 2; ++j)
+      {
+        for (uint32 k = 0; k < 2; ++k)
+        {
+          vec3 weight_vec(u - i, v - j, w - k);
+          accum += (i * uu + (1 - i) * (1 - uu)) * 
+                   (j * vv + (1 - j) * (1 - vv)) * 
+                   (k * ww + (1 - k) * (1 - ww)) *
+                   glm::dot(c[i][j][k], weight_vec);
+        }
+      }
+    }
+    return accum;
+  }
 
 } /* end of vxt namespace */

@@ -22,11 +22,19 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../include/hitable.h"
-#include "../include/ray.h"
+#include "../../include/objects/sphere.h"
+#include "../../include/objects/aabb.h"
+#include "../../include/renderer/ray.h"
 
 namespace vxt
 {
+
+  static void uv(const vec3& p, vec2& uv)
+  {
+    float phi = atan2(p.z, p.x);
+    float theta = asin(p.y);
+    uv = vec2(1 - (phi + PI) / (2 * PI), (theta + PI / 2) / PI);
+  }
 
   bool Sphere::hit(const Ray& r, float t_min, float t_max, Hit& h) const
   {
@@ -45,7 +53,8 @@ namespace vxt
       {
         h.t = temp;
         h.p = r.point_param(h.t);
-        h.normal = (h.p - center) / radius;
+        h.n = (h.p - center) / radius;
+        uv(h.n, h.uv);
         h.mat = mat;
         return true;
       }
@@ -54,12 +63,66 @@ namespace vxt
       {
         h.t = temp;
         h.p = r.point_param(h.t);
-        h.normal = (h.p - center) / radius;
+        h.n = (h.p - center) / radius;
+        uv(h.n, h.uv);
         h.mat = mat;
         return true;
       }
     }
     return false;
   }
+
+  bool Sphere::boundingBox(float t0, float t1, AABB& box) const
+  {
+    box = AABB(center - vec3(radius), center + vec3(radius));
+    return true;
+  }
+
+  vec3 MovingSphere::center(float time) const
+  {
+    return center0 + ((time - time0) / (time1 - time0)) * (center1 - center0);
+  }
+
+  bool MovingSphere::hit(const Ray& r, float t_min, float t_max, Hit& h) const
+  {
+    vec3 dir = r.origin() - center(r.time());
+    float A = glm::dot(r.direction(), r.direction());
+    float B = glm::dot(dir, r.direction());
+    float C = glm::dot(dir, dir) - radius * radius;
+
+    float discriminant = B * B - A * C;
+
+    if (discriminant > 0.0f)
+    {
+      float temp;
+      temp = (-B - sqrt(B * B - A * C)) / A;
+      if (temp < t_max && temp > t_min)
+      {
+        h.t = temp;
+        h.p = r.point_param(h.t);
+        h.n = (h.p - center(r.time())) / radius;
+        h.mat = mat;
+        return true;
+      }
+      temp = (-B + sqrt(B * B - A * C)) / A;
+      if (temp < t_max && temp > t_min)
+      {
+        h.t = temp;
+        h.p = r.point_param(h.t);
+        h.n = (h.p - center(r.time())) / radius;
+        h.mat = mat;
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool MovingSphere::boundingBox(float t0, float t1, AABB& box) const
+  {
+    box = AABB(AABB(center(t0) - vec3(radius), center(t0) + vec3(radius)),
+               AABB(center(t1) - vec3(radius), center(t1) + vec3(radius)));
+    return true;
+  }
+
 
 } /* end of vxt namespace */

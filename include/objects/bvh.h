@@ -1,3 +1,5 @@
+#pragma once
+
 // ----------------------------------------------------------------------------------------
 // MIT License
 // 
@@ -22,62 +24,33 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../include/application.h"
+#include "hitable.h"
+#include "aabb.h"
 
+/**
+* \file bvh.h
+*
+* \author Victor Avila (avilapa.github.io)
+*
+* \brief Bounding Volume Hierarchy classes.
+*
+*/
 namespace vxt
 {
 
-  Application::Application()
+  class BVHNode : public Hitable
   {
-  }
+  public:
+    BVHNode() {}
+    BVHNode(Hitable **l, int n, float time0, float time1);
 
-  Application::~Application() 
-  {
-  }
+    virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const;
+    virtual bool boundingBox(float t0, float t1, AABB& box) const;
 
-  void Application::init() 
-  {
-
-  }
-
-  void Application::start() 
-  {
-
-  }
-
-  void Application::update() 
-  {
-
-  }
-
-  void Application::stop() 
-  {
-
-  }
-
-  bool Application::is_exiting()
-  {
-    return exit_;
-  }
-
-  uint32 Application::run(int argc, char** argv) 
-  {
-    init();
-
-    if (exit_)
-    {
-      return 0;
-    }
-
-    start();
-
-    while (!is_exiting())
-    {
-      update();
-    }
-
-    stop();
-    return 0;
-  }
+  private:
+    Hitable* left;
+    Hitable* right;
+    AABB box;
+  };
 
 } /* end of vxt namespace */

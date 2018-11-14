@@ -24,33 +24,61 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "types.h"
+#include "camera.h"
+#include "../objects/hitable.h"
 
 /**
-* \file camera.h
+* \file scene.h
 *
 * \author Victor Avila (avilapa.github.io)
 *
-* \brief .
+* \brief Scene class.
 *
 */
 namespace vxt
 {
 
-  class Ray;
-
-  class Camera
+  class Background
   {
   public:
-    Camera(vec3 look_from, vec3 look_at, vec3 up, float vfov, float aspect, float aperture, float focus_dist);
-    Ray ray(float s, float t);
-
-    vec3 origin;
-    vec3 x0y0;
-    vec3 axis_x;
-    vec3 axis_y;
-    vec3 u, v, w;
-    float lens_radius;
+    virtual vec3 color(const Ray& r) const { return vec3(0.0f); }
   };
+
+  class GradientBackground : public Background
+  {
+  public:
+    virtual vec3 color(const Ray& r) const;
+  };
+
+  class Scene
+  {
+  public:
+    Scene();
+    virtual ~Scene();
+
+    void add(Hitable* hitable);
+
+    HitableList* world() const { return world_; }
+
+  protected:
+    HitableList* world_;
+  };
+
+#define SCENE(name) class name : public Scene \
+  {\
+  public:\
+    name();\
+    static Camera* camera(uint32 w, uint32 h);\
+  };
+
+  SCENE(SampleScene);
+  SCENE(RandomScene);
+  SCENE(PerlinScene);
+  SCENE(EarthScene);
+  SCENE(ThreeSpheresScene);
+  SCENE(SampleLightScene);
+  SCENE(CornellBoxScene);
+  SCENE(CornellSmokeScene);
+  SCENE(FinalScene);
 
 } /* end of vxt namespace */

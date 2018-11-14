@@ -1,5 +1,3 @@
-#pragma once
-
 // ----------------------------------------------------------------------------------------
 // MIT License
 // 
@@ -26,21 +24,60 @@
 
 #include "../../include/core/application.h"
 
-/**
-* \file main.h
-*
-* \author Victor Avila (avilapa.github.io)
-*
-* \brief Ray tracing in a Weekend - by Peter Shirley.
-*
-*/
-namespace vxt 
+namespace vxt
 {
 
-  class Main : public Application
+  Application::Application()
   {
-  public:
-    virtual void init() override;
-  };
+  }
+
+  Application::~Application() 
+  {
+  }
+
+  void Application::init() 
+  {
+
+  }
+
+  void Application::start() 
+  {
+
+  }
+
+  void Application::update() 
+  {
+
+  }
+
+  void Application::stop() 
+  {
+
+  }
+
+  bool Application::is_exiting()
+  {
+    return exit_;
+  }
+
+  uint32 Application::run(int argc, char** argv) 
+  {
+    init();
+
+    if (exit_)
+    {
+      return 0;
+    }
+
+    start();
+
+    while (!is_exiting())
+    {
+      update();
+    }
+
+    stop();
+    return 0;
+  }
 
 } /* end of vxt namespace */

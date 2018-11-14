@@ -4,8 +4,38 @@
     <Filter Include="include">
       <UniqueIdentifier>{89AF369E-F58E-B539-FEA6-40106A051C9B}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\core">
+      <UniqueIdentifier>{4ECC076D-3A2F-9711-E3B4-CFC7CFF66294}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\materials">
+      <UniqueIdentifier>{87143B7F-F32A-3915-3CA2-C436A8F7099D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\objects">
+      <UniqueIdentifier>{EFCA8710-5B56-F5D4-6467-78C9D07151D5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\renderer">
+      <UniqueIdentifier>{9CF678D6-88EF-9728-B121-7DAD9D797734}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include\utils">
+      <UniqueIdentifier>{16A8490F-8268-C545-4BA3-0EC3B7220A22}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\core">
+      <UniqueIdentifier>{72AE5CD2-5E7B-B7DD-8794-A58573C0EC6B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\materials">
+      <UniqueIdentifier>{2BEDE6DA-97AD-6211-60E8-AB8ECC67A7ED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\objects">
+      <UniqueIdentifier>{932A5DE1-FFDF-D5D6-88D4-CFADF488CCDA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\renderer">
+      <UniqueIdentifier>{C04AFAC1-ACAD-8966-5533-C21C417555E9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\utils">
+      <UniqueIdentifier>{BACE3A1F-2639-EF95-6F77-A03BDB20CDEA}</UniqueIdentifier>
     </Filter>
     <Filter Include="deps">
       <UniqueIdentifier>{F1A1957C-DDD8-960D-86C5-7C1072DB120F}</UniqueIdentifier>
@@ -28,14 +58,11 @@
     <Filter Include="deps\glm\simd">
       <UniqueIdentifier>{F63C3851-62FD-B387-2B38-FD0497B7F863}</UniqueIdentifier>
     </Filter>
+    <Filter Include="deps\stb">
+      <UniqueIdentifier>{D69DBB31-C26A-163D-EB83-04E5D7AF4BCB}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\deps\glm\desktop.ini">
-      <Filter>deps\glm</Filter>
-    </None>
-    <None Include="..\..\deps\glm\detail\desktop.ini">
-      <Filter>deps\glm\detail</Filter>
-    </None>
     <None Include="..\..\deps\glm\detail\func_common.inl">
       <Filter>deps\glm\detail</Filter>
     </None>
@@ -141,9 +168,6 @@
     <None Include="..\..\deps\glm\detail\type_vec4_simd.inl">
       <Filter>deps\glm\detail</Filter>
     </None>
-    <None Include="..\..\deps\glm\ext\desktop.ini">
-      <Filter>deps\glm\ext</Filter>
-    </None>
     <None Include="..\..\deps\glm\ext\vec1.inl">
       <Filter>deps\glm\ext</Filter>
     </None>
@@ -157,9 +181,6 @@
       <Filter>deps\glm\gtc</Filter>
     </None>
     <None Include="..\..\deps\glm\gtc\constants.inl">
-      <Filter>deps\glm\gtc</Filter>
-    </None>
-    <None Include="..\..\deps\glm\gtc\desktop.ini">
       <Filter>deps\glm\gtc</Filter>
     </None>
     <None Include="..\..\deps\glm\gtc\epsilon.inl">
@@ -235,9 +256,6 @@
       <Filter>deps\glm\gtx</Filter>
     </None>
     <None Include="..\..\deps\glm\gtx\component_wise.inl">
-      <Filter>deps\glm\gtx</Filter>
-    </None>
-    <None Include="..\..\deps\glm\gtx\desktop.ini">
       <Filter>deps\glm\gtx</Filter>
     </None>
     <None Include="..\..\deps\glm\gtx\dual_quaternion.inl">
@@ -393,34 +411,61 @@
     <None Include="..\..\deps\glm\gtx\wrap.inl">
       <Filter>deps\glm\gtx</Filter>
     </None>
-    <None Include="..\..\deps\glm\simd\desktop.ini">
-      <Filter>deps\glm\simd</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\application.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\..\include\core\application.h">
+      <Filter>include\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\bitmap.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\..\include\core\types.h">
+      <Filter>include\core</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\camera.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\..\include\materials\material.h">
+      <Filter>include\materials</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\hitable.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\..\include\materials\texture.h">
+      <Filter>include\materials</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\hitable_list.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\..\include\objects\aabb.h">
+      <Filter>include\objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\material.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\..\include\objects\box.h">
+      <Filter>include\objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\ray.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\..\include\objects\bvh.h">
+      <Filter>include\objects</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\include\types.h">
-      <Filter>include</Filter>
+    <ClInclude Include="..\..\include\objects\hitable.h">
+      <Filter>include\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\objects\objects.h">
+      <Filter>include\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\objects\rect.h">
+      <Filter>include\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\objects\sphere.h">
+      <Filter>include\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\objects\volume.h">
+      <Filter>include\objects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\renderer\camera.h">
+      <Filter>include\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\renderer\ray.h">
+      <Filter>include\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\renderer\renderer.h">
+      <Filter>include\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\renderer\scene.h">
+      <Filter>include\renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\utils\bitmap.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\utils\perlin.h">
+      <Filter>include\utils</Filter>
     </ClInclude>
     <ClInclude Include="..\..\deps\glm\common.hpp">
       <Filter>deps\glm</Filter>
@@ -854,25 +899,55 @@
     <ClInclude Include="..\..\deps\glm\simd\vector_relational.h">
       <Filter>deps\glm\simd</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\deps\stb\stb_image.h">
+      <Filter>deps\stb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\application.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\..\src\core\application.cpp">
+      <Filter>src\core</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\bitmap.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\..\src\materials\material.cpp">
+      <Filter>src\materials</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\camera.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\..\src\materials\texture.cpp">
+      <Filter>src\materials</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\hitable.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\..\src\objects\aabb.cpp">
+      <Filter>src\objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\hitable_list.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\..\src\objects\box.cpp">
+      <Filter>src\objects</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\src\material.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\..\src\objects\bvh.cpp">
+      <Filter>src\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\objects\hitable.cpp">
+      <Filter>src\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\objects\rect.cpp">
+      <Filter>src\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\objects\sphere.cpp">
+      <Filter>src\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\objects\volume.cpp">
+      <Filter>src\objects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\renderer\camera.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\renderer\renderer.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\renderer\scene.cpp">
+      <Filter>src\renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\bitmap.cpp">
+      <Filter>src\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\perlin.cpp">
+      <Filter>src\utils</Filter>
     </ClCompile>
     <ClCompile Include="..\..\deps\glm\detail\dummy.cpp">
       <Filter>deps\glm\detail</Filter>

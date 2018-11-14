@@ -24,57 +24,70 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "types.h"
+#include "../core/types.h"
+#include "../renderer/ray.h"
 
 /**
-* \file material.h
+* \file aabb.h
 *
 * \author Victor Avila (avilapa.github.io)
 *
-* \brief .
+* \brief Axis Aligned Bounding Box.
 *
 */
 namespace vxt
 {
 
-  class Ray;
-  struct Hit;
+  inline float ffmin(float a, float b) { return a < b ? a : b; }
+  inline float ffmax(float a, float b) { return a > b ? a : b; }
 
-  class Material
+  class AABB
   {
   public:
-    virtual bool scatter(const Ray& r_in, const Hit hit, vec3& attenuation, Ray& scattered) const = 0;
-  };
+    AABB() {}
+    AABB(const vec3& A, const vec3& B) : min_(A), max_(B) {}
+    AABB(AABB box0, AABB box1);
 
-  class Lambertian : public Material
-  {
-  public:
-    Lambertian(const vec3& a) : albedo(a) {}
 
-    virtual bool scatter(const Ray& r_in, const Hit hit, vec3& attenuation, Ray& scattered) const;
+    vec3 min_vec() const { return min_; }
+    vec3 max_vec() const { return max_; }
 
-    vec3 albedo;
-  };
+    inline bool hit(const Ray& r, float tmin, float tmax) const
+    {
+      for (uint32 i = 0; i < 3; ++i)
+      {
+        /*float t0 = ffmin((min_[i] - r.origin()[i]) / r.direction()[i],
+          (max_[i] - r.origin()[i]) / r.direction()[i]);
+        float t1 = ffmax((min_[i] - r.origin()[i]) / r.direction()[i],
+          (max_[i] - r.origin()[i]) / r.direction()[i]);
 
-  class Metal : public Material
-  {
-  public:
-    Metal(const vec3& a, float f) : albedo(a) { if (f < 1.0f) fuzz = f; else fuzz = 1.0f; }
+        tmin = ffmax(t0, tmin);
+        tmax = ffmin(t1, tmax);
+        */
 
-    virtual bool scatter(const Ray& r_in, const Hit hit, vec3& attenuation, Ray& scattered) const;
+        float invD = 1.0f / r.direction()[i];
+        float t0 = (min_[i] - r.origin()[i]) * invD;
+        float t1 = (max_[i] - r.origin()[i]) * invD;
 
-    vec3 albedo;
-    float fuzz;
-  };
+        if (invD < 0.0f)
+        {
+          std::swap(t0, t1);
+        }
 
-  class Dielectric : public Material
-  {
-  public:
-    Dielectric(float ri) : index_of_refraction(ri) {}
+        tmin = t0 > tmin ? t0 : tmin;
+        tmax = t1 > tmax ? t1 : tmax;
 
-    virtual bool scatter(const Ray& r_in, const Hit hit, vec3& attenuation, Ray& scattered) const;
+        if (tmax <= tmin)
+        {
+          return false;
+        }
+      }
+      return true;
+    }
 
-    float index_of_refraction;
+  private:
+    vec3 min_;
+    vec3 max_;
   };
 
 } /* end of vxt namespace */

@@ -1,5 +1,3 @@
-#pragma once
-
 // ----------------------------------------------------------------------------------------
 // MIT License
 // 
@@ -24,23 +22,37 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../../include/core/application.h"
+#include "../../include/objects/box.h"
+#include "../../include/objects/rect.h"
+#include "../../include/objects/aabb.h"
+#include "../../include/renderer/ray.h"
 
-/**
-* \file main.h
-*
-* \author Victor Avila (avilapa.github.io)
-*
-* \brief Ray tracing in a Weekend - by Peter Shirley.
-*
-*/
-namespace vxt 
+namespace vxt
 {
 
-  class Main : public Application
+  Box::Box(const vec3& p0, const vec3& p1, Material* m)
   {
-  public:
-    virtual void init() override;
-  };
+    p_min_ = p0;
+    p_max_ = p1;
+    HitableList* list = new HitableList();
+    list->add(new XYRect(p0.x, p1.x, p0.y, p1.y, p1.z, m));
+    list->add(new FlipNormals(new XYRect(p0.x, p1.x, p0.y, p1.y, p0.z, m)));
+    list->add(new XZRect(p0.x, p1.x, p0.z, p1.z, p1.y, m));
+    list->add(new FlipNormals(new XZRect(p0.x, p1.x, p0.z, p1.z, p0.y, m)));
+    list->add(new YZRect(p0.y, p1.y, p0.z, p1.z, p1.x, m));
+    list->add(new FlipNormals(new YZRect(p0.y, p1.y, p0.z, p1.z, p0.x, m)));
+    list_ptr_ = list;
+  }
+
+  bool Box::hit(const Ray& r, float t_min, float t_max, Hit& h) const
+  {
+    return list_ptr_->hit(r, t_min, t_max, h);
+  }
+
+  bool Box::boundingBox(float t0, float t1, AABB& box) const
+  {
+    box = AABB(p_min_, p_max_);
+    return true;
+  }
 
 } /* end of vxt namespace */

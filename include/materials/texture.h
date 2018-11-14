@@ -24,23 +24,77 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../../include/core/application.h"
+#include "../core/types.h"
+#include "../utils/perlin.h"
 
 /**
-* \file main.h
+* \file texture.h
 *
 * \author Victor Avila (avilapa.github.io)
 *
-* \brief Ray tracing in a Weekend - by Peter Shirley.
+* \brief .
 *
 */
-namespace vxt 
+namespace vxt
 {
 
-  class Main : public Application
+  class Texture
   {
   public:
-    virtual void init() override;
+    virtual vec3 value(float u, float v, const vec3& p) const = 0;
+  };
+
+  class ConstantTexture : public Texture
+  {
+  public:
+    ConstantTexture() {}
+    ConstantTexture(vec3 c) : color(c) {}
+
+    virtual vec3 value(float u, float v, const vec3& p) const { return color; };
+
+  private:
+    vec3 color;
+  };
+
+  class CheckerTexture : public Texture
+  {
+  public:
+    CheckerTexture() {}
+    CheckerTexture(Texture* t0, Texture* t1) : even(t0), odd(t1) {}
+
+    virtual vec3 value(float u, float v, const vec3& p) const;
+
+  private:
+    Texture* odd;
+    Texture* even;
+  };
+
+  class NoiseTexture : public Texture
+  {
+  public:
+    NoiseTexture() {}
+    NoiseTexture(float sc) : scale(sc) {}
+    
+    virtual vec3 value(float u, float v, const vec3& p) const;
+
+  private:
+    PerlinNoise noise;
+    float scale = 1.0f;
+  };
+
+  class ImageTexture : public Texture
+  {
+  public:
+    ImageTexture() {}
+    ImageTexture(unsigned char* pixels, int A, int B) : data(pixels), nx(A), ny(B) {}
+    ImageTexture(const char* file);
+    ~ImageTexture();
+
+    virtual vec3 value(float u, float v, const vec3& p) const;
+
+  private:
+    unsigned char* data;
+    int nx, ny;
   };
 
 } /* end of vxt namespace */

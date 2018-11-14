@@ -9,17 +9,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\examples\dev\desktop.ini">
-      <Filter>examples\dev</Filter>
-    </None>
-    <None Include="..\..\examples\dev\output_ch08_1000spp.bmp">
-      <Filter>examples\dev</Filter>
-    </None>
-    <None Include="..\..\examples\dev\output_final_100spp.bmp">
-      <Filter>examples\dev</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="..\..\examples\dev\main.h">
       <Filter>examples\dev</Filter>
     </ClInclude>

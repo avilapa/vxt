@@ -27,11 +27,11 @@
 #ifdef _WIN32
 
 #define GLM_ENABLE_EXPERIMENTAL
-#include "../deps/glm/glm.hpp"
-#include "../deps/glm/gtc/matrix_transform.hpp"
-#include "../deps/glm/gtx/transform.hpp"
-#include "../deps/glm//gtc/quaternion.hpp"
-#include "../deps/glm//gtx/matrix_decompose.hpp"
+#include "../../deps/glm/glm.hpp"
+#include "../../deps/glm/gtc/matrix_transform.hpp"
+#include "../../deps/glm/gtx/transform.hpp"
+#include "../../deps/glm//gtc/quaternion.hpp"
+#include "../../deps/glm//gtx/matrix_decompose.hpp"
 
 #include <windows.h>
 #include <conio.h>
@@ -45,6 +45,8 @@
 
 namespace vxt
 {
+
+#define PI 3.14159265359
 
   typedef ::int8_t			int8;
   typedef ::int16_t			int16;

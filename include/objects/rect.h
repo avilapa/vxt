@@ -24,23 +24,56 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../../include/core/application.h"
+#include "hitable.h"
 
 /**
-* \file main.h
+* \file rect.h
 *
 * \author Victor Avila (avilapa.github.io)
 *
-* \brief Ray tracing in a Weekend - by Peter Shirley.
+* \brief .
 *
 */
-namespace vxt 
+namespace vxt
 {
 
-  class Main : public Application
+  class XYRect : public Hitable
   {
   public:
-    virtual void init() override;
+    XYRect() {}
+    XYRect(float x0, float x1, float y0, float y1, float k, Material* m) : x0_(x0), x1_(x1), y0_(y0), y1_(y1), k_(k), mat(m) {}
+
+    virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const;
+    virtual bool boundingBox(float t0, float t1, AABB& box) const;
+
+    float x0_, x1_, y0_, y1_, k_;
+    Material *mat;
+  };
+
+  class XZRect : public Hitable
+  {
+  public:
+    XZRect() {}
+    XZRect(float x0, float x1, float z0, float z1, float k, Material* m) : x0_(x0), x1_(x1), z0_(z0), z1_(z1), k_(k), mat(m) {}
+
+    virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const;
+    virtual bool boundingBox(float t0, float t1, AABB& box) const;
+
+    float x0_, x1_, z0_, z1_, k_;
+    Material *mat;
+  };
+
+  class YZRect : public Hitable
+  {
+  public:
+    YZRect() {}
+    YZRect(float y0, float y1, float z0, float z1, float k, Material* m) : y0_(y0), y1_(y1), z0_(z0), z1_(z1), k_(k), mat(m) {}
+
+    virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const;
+    virtual bool boundingBox(float t0, float t1, AABB& box) const;
+
+    float y0_, y1_, z0_, z1_, k_;
+    Material *mat;
   };
 
 } /* end of vxt namespace */

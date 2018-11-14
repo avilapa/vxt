@@ -64,25 +64,25 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>..\</OutDir>
-    <IntDir>d:\GoogleDrive\Current Projects\VXT\vxt-development\project\vs\obj\x32\Debug\vxt\</IntDir>
+    <IntDir>d:\GoogleDrive\Current Projects\VXT\vxt-release\project\vs\obj\x32\Debug\vxt\</IntDir>
     <TargetName>vxt</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>..\</OutDir>
-    <IntDir>d:\GoogleDrive\Current Projects\VXT\vxt-development\project\vs\obj\x64\Debug\vxt\</IntDir>
+    <IntDir>d:\GoogleDrive\Current Projects\VXT\vxt-release\project\vs\obj\x64\Debug\vxt\</IntDir>
     <TargetName>vxt</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>..\</OutDir>
-    <IntDir>d:\GoogleDrive\Current Projects\VXT\vxt-development\project\vs\obj\x32\Release\vxt\</IntDir>
+    <IntDir>d:\GoogleDrive\Current Projects\VXT\vxt-release\project\vs\obj\x32\Release\vxt\</IntDir>
     <TargetName>vxt</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\</OutDir>
-    <IntDir>d:\GoogleDrive\Current Projects\VXT\vxt-development\project\vs\obj\x64\Release\vxt\</IntDir>
+    <IntDir>d:\GoogleDrive\Current Projects\VXT\vxt-release\project\vs\obj\x64\Release\vxt\</IntDir>
     <TargetName>vxt</TargetName>
     <TargetExt>.lib</TargetExt>
   </PropertyGroup>
@@ -197,14 +197,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\application.h" />
-    <ClInclude Include="..\..\include\bitmap.h" />
-    <ClInclude Include="..\..\include\camera.h" />
-    <ClInclude Include="..\..\include\hitable.h" />
-    <ClInclude Include="..\..\include\hitable_list.h" />
-    <ClInclude Include="..\..\include\material.h" />
-    <ClInclude Include="..\..\include\ray.h" />
-    <ClInclude Include="..\..\include\types.h" />
+    <ClInclude Include="..\..\include\core\application.h" />
+    <ClInclude Include="..\..\include\core\types.h" />
+    <ClInclude Include="..\..\include\materials\material.h" />
+    <ClInclude Include="..\..\include\materials\texture.h" />
+    <ClInclude Include="..\..\include\objects\aabb.h" />
+    <ClInclude Include="..\..\include\objects\box.h" />
+    <ClInclude Include="..\..\include\objects\bvh.h" />
+    <ClInclude Include="..\..\include\objects\hitable.h" />
+    <ClInclude Include="..\..\include\objects\objects.h" />
+    <ClInclude Include="..\..\include\objects\rect.h" />
+    <ClInclude Include="..\..\include\objects\sphere.h" />
+    <ClInclude Include="..\..\include\objects\volume.h" />
+    <ClInclude Include="..\..\include\renderer\camera.h" />
+    <ClInclude Include="..\..\include\renderer\ray.h" />
+    <ClInclude Include="..\..\include\renderer\renderer.h" />
+    <ClInclude Include="..\..\include\renderer\scene.h" />
+    <ClInclude Include="..\..\include\utils\bitmap.h" />
+    <ClInclude Include="..\..\include\utils\perlin.h" />
     <ClInclude Include="..\..\deps\glm\common.hpp" />
     <ClInclude Include="..\..\deps\glm\exponential.hpp" />
     <ClInclude Include="..\..\deps\glm\ext.hpp" />
@@ -349,25 +359,53 @@
     <ClInclude Include="..\..\deps\glm\simd\platform.h" />
     <ClInclude Include="..\..\deps\glm\simd\trigonometric.h" />
     <ClInclude Include="..\..\deps\glm\simd\vector_relational.h" />
+    <ClInclude Include="..\..\deps\stb\stb_image.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\application.cpp">
-      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    <ClCompile Include="..\..\src\core\application.cpp">
+      <ObjectFileName>$(IntDir)src\core\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\bitmap.cpp">
-      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    <ClCompile Include="..\..\src\materials\material.cpp">
+      <ObjectFileName>$(IntDir)src\materials\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\camera.cpp">
-      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    <ClCompile Include="..\..\src\materials\texture.cpp">
+      <ObjectFileName>$(IntDir)src\materials\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\hitable.cpp">
-      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    <ClCompile Include="..\..\src\objects\aabb.cpp">
+      <ObjectFileName>$(IntDir)src\objects\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\hitable_list.cpp">
-      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    <ClCompile Include="..\..\src\objects\box.cpp">
+      <ObjectFileName>$(IntDir)src\objects\</ObjectFileName>
     </ClCompile>
-    <ClCompile Include="..\..\src\material.cpp">
-      <ObjectFileName>$(IntDir)src\</ObjectFileName>
+    <ClCompile Include="..\..\src\objects\bvh.cpp">
+      <ObjectFileName>$(IntDir)src\objects\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\objects\hitable.cpp">
+      <ObjectFileName>$(IntDir)src\objects\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\objects\rect.cpp">
+      <ObjectFileName>$(IntDir)src\objects\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\objects\sphere.cpp">
+      <ObjectFileName>$(IntDir)src\objects\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\objects\volume.cpp">
+      <ObjectFileName>$(IntDir)src\objects\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\renderer\camera.cpp">
+      <ObjectFileName>$(IntDir)src\renderer\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\renderer\renderer.cpp">
+      <ObjectFileName>$(IntDir)src\renderer\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\renderer\scene.cpp">
+      <ObjectFileName>$(IntDir)src\renderer\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\bitmap.cpp">
+      <ObjectFileName>$(IntDir)src\utils\</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\perlin.cpp">
+      <ObjectFileName>$(IntDir)src\utils\</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\deps\glm\detail\dummy.cpp">
       <ObjectFileName>$(IntDir)deps\glm\detail\</ObjectFileName>
@@ -377,8 +415,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\deps\glm\desktop.ini" />
-    <None Include="..\..\deps\glm\detail\desktop.ini" />
     <None Include="..\..\deps\glm\detail\func_common.inl" />
     <None Include="..\..\deps\glm\detail\func_common_simd.inl" />
     <None Include="..\..\deps\glm\detail\func_exponential.inl" />
@@ -414,13 +450,11 @@
     <None Include="..\..\deps\glm\detail\type_vec3.inl" />
     <None Include="..\..\deps\glm\detail\type_vec4.inl" />
     <None Include="..\..\deps\glm\detail\type_vec4_simd.inl" />
-    <None Include="..\..\deps\glm\ext\desktop.ini" />
     <None Include="..\..\deps\glm\ext\vec1.inl" />
     <None Include="..\..\deps\glm\ext\vector_relational.inl" />
     <None Include="..\..\deps\glm\gtc\bitfield.inl" />
     <None Include="..\..\deps\glm\gtc\color_space.inl" />
     <None Include="..\..\deps\glm\gtc\constants.inl" />
-    <None Include="..\..\deps\glm\gtc\desktop.ini" />
     <None Include="..\..\deps\glm\gtc\epsilon.inl" />
     <None Include="..\..\deps\glm\gtc\integer.inl" />
     <None Include="..\..\deps\glm\gtc\matrix_access.inl" />
@@ -446,7 +480,6 @@
     <None Include="..\..\deps\glm\gtx\common.inl" />
     <None Include="..\..\deps\glm\gtx\compatibility.inl" />
     <None Include="..\..\deps\glm\gtx\component_wise.inl" />
-    <None Include="..\..\deps\glm\gtx\desktop.ini" />
     <None Include="..\..\deps\glm\gtx\dual_quaternion.inl" />
     <None Include="..\..\deps\glm\gtx\euler_angles.inl" />
     <None Include="..\..\deps\glm\gtx\extend.inl" />
@@ -498,7 +531,6 @@
     <None Include="..\..\deps\glm\gtx\vector_angle.inl" />
     <None Include="..\..\deps\glm\gtx\vector_query.inl" />
     <None Include="..\..\deps\glm\gtx\wrap.inl" />
-    <None Include="..\..\deps\glm\simd\desktop.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

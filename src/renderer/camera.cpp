@@ -22,27 +22,45 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../include/hitable_list.h"
-#include "../include/ray.h"
+#include "../../include/renderer/camera.h"
+#include "../../include/renderer/ray.h"
 
 namespace vxt
 {
 
-  bool HitableList::hit(const Ray& r, float t_min, float t_max, Hit& h) const
+  static vec3 randomUnitDisk()
   {
-    Hit temp_hit;
-    bool hit_anything = false;
-    double closest = t_max;
-    for (uint32 i = 0; i < list_size; ++i)
+    vec3 p;
+    do 
     {
-      if (list[i]->hit(r, t_min, closest, temp_hit))
-      {
-        hit_anything = true;
-        closest = temp_hit.t;
-        h = temp_hit;
-      }
-    }
-    return hit_anything;
+      p = 2.0f * vec3(randomFloat01(), randomFloat01(), 0.0f) - vec3(1, 1, 0);
+    } while (glm::dot(p, p) >= 1.0f);
+    return p;
+  }
+
+  Camera::Camera(vec3 look_from, vec3 look_at, vec3 up, float vfov, float aspect, float aperture, float focus_dist, float t0, float t1)
+  {
+    time0 = t0;
+    time1 = t1;
+    lens_radius = aperture / 2.0f;
+    float theta = vfov * PI / 180;
+    float half_height = tan(theta / 2.0f);
+    float half_width = aspect * half_height;
+    origin = look_from;
+    w = glm::normalize(look_from - look_at);
+    u = glm::normalize(glm::cross(up, w));
+    v = glm::cross(w, u);
+    x0y0 = origin - half_width * focus_dist * u - half_height * focus_dist * v - focus_dist * w;
+    axis_x = 2 * half_width * focus_dist * u;
+    axis_y = 2 * half_height * focus_dist * v;
+  }
+
+  Ray Camera::ray(float s, float t)
+  {
+    vec3 rd = lens_radius * randomUnitDisk();
+    vec3 offset = u * rd.x + v * rd.y;
+    float time = time0 + randomFloat01() * (time1 - time0);
+    return Ray(origin + offset, x0y0 + s * axis_x + t * axis_y - origin - offset, time);
   }
 
 } /* end of vxt namespace */

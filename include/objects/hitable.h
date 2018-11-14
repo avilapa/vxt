@@ -24,7 +24,10 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "types.h"
+#include "../core/types.h"
+#include "aabb.h"
+
+#include <vector>
 
 /**
 * \file hitable.h
@@ -44,7 +47,8 @@ namespace vxt
   {
     float t;
     vec3 p;
-    vec3 normal;
+    vec3 n;
+    vec2 uv;
     Material *mat;
   };
 
@@ -52,19 +56,63 @@ namespace vxt
   {
   public:
     virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const = 0;
+    virtual bool boundingBox(float t0, float t1, AABB& box) const = 0;
   };
 
-  class Sphere : public Hitable
+  class HitableList : public Hitable
   {
   public:
-    Sphere() {}
-    Sphere(vec3 c, float r, Material* m) : center(c), radius(r), mat(m) {}
+    HitableList() {}
+    HitableList(std::vector<Hitable*> hitables) : hitables_(hitables) {}
+
+    void add(Hitable* hitable);
 
     virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const;
+    virtual bool boundingBox(float t0, float t1, AABB& box) const;
 
-    vec3 center;
-    float radius;
-    Material *mat;
+  private:
+    std::vector<Hitable*> hitables_;
+  };
+
+  class FlipNormals : public Hitable
+  {
+  public:
+    FlipNormals(Hitable* p) : hitable_(p) {}
+
+    virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const;
+    virtual bool boundingBox(float t0, float t1, AABB& box) const;
+
+  private:
+    Hitable* hitable_;
+  };
+
+  class Translate : public Hitable
+  {
+  public:
+    Translate(Hitable* p, const vec3& displacement) : hitable_(p), offset_(displacement) {}
+
+    virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const;
+    virtual bool boundingBox(float t0, float t1, AABB& box) const;
+
+  private:
+    Hitable* hitable_;
+    vec3 offset_;
+  };
+
+  class RotateY : public Hitable
+  {
+  public:
+    RotateY(Hitable* p, float angle);
+
+    virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const;
+    virtual bool boundingBox(float t0, float t1, AABB& box) const;
+
+  private:
+    Hitable* hitable_;
+    float sin_theta_;
+    float cos_theta_;
+    bool has_box_;
+    AABB bbox_;
   };
 
 } /* end of vxt namespace */

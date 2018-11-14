@@ -74,6 +74,7 @@ project "vxt"
 		path.join(PROJ_DIR, "include/**.h"),
 		-- // Dependencies // --
 		path.join(PROJ_DIR, "deps/glm/**.h*"),
+		path.join(PROJ_DIR, "deps/stb/**.h"),
 	}
 	files {
 		path.join(PROJ_DIR, "include/**.h"),
@@ -81,6 +82,7 @@ project "vxt"
 		path.join(PROJ_DIR, "src/**.cpp"),
 		-- // Dependencies // --
 		path.join(PROJ_DIR, "deps/glm/**"),
+		path.join(PROJ_DIR, "deps/stb/**"),
 	}
 	excludes {
 		

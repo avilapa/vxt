@@ -1,5 +1,3 @@
-#pragma once
-
 // ----------------------------------------------------------------------------------------
 // MIT License
 // 
@@ -24,23 +22,37 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../../include/core/application.h"
+#include "../../include/utils/bitmap.h"
 
-/**
-* \file main.h
-*
-* \author Victor Avila (avilapa.github.io)
-*
-* \brief Ray tracing in a Weekend - by Peter Shirley.
-*
-*/
-namespace vxt 
+namespace vxt
 {
 
-  class Main : public Application
+  void WriteBitmap(const char* output_file, uint32 width, uint32 height, uint32 bytes_per_pixel, const uint8* pixels)
   {
-  public:
-    virtual void init() override;
-  };
+    // see : http://paulbourke.net/dataformats/bitmaps/
+    // and : https://www.siggraph.org/education/materials/HyperVis/asp_data/compimag/bmpfile.htm
+
+    const uint32 pixelBytes = width * height*bytes_per_pixel;
+
+    BITMAPFILEHEADER bmfh;
+    memset(&bmfh, 0, sizeof(BITMAPFILEHEADER));
+    bmfh.bfType = 19778; // magic 'BM'
+    bmfh.bfSize = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER) + pixelBytes;
+    bmfh.bfOffBits = sizeof(BITMAPFILEHEADER) + sizeof(BITMAPINFOHEADER);
+
+    BITMAPINFOHEADER bmih;
+    memset(&bmih, 0, sizeof(BITMAPINFOHEADER));
+    bmih.biSize = sizeof(BITMAPINFOHEADER);
+    bmih.biWidth = width;
+    bmih.biHeight = height;
+    bmih.biPlanes = 0; // or 0?
+    bmih.biBitCount = 32;
+    bmih.biCompression = BI_RGB;
+
+    std::ofstream bmpFile(output_file, std::ios::out | std::ios::binary);
+    bmpFile.write(reinterpret_cast<const char*>(&bmfh), sizeof(BITMAPFILEHEADER));
+    bmpFile.write(reinterpret_cast<const char*>(&bmih), sizeof(BITMAPINFOHEADER));
+    bmpFile.write(reinterpret_cast<const char*>(pixels), pixelBytes);
+  }
 
 } /* end of vxt namespace */

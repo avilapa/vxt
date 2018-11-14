@@ -24,23 +24,35 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../../include/core/application.h"
+#include "hitable.h"
+#include "../materials/material.h"
 
 /**
-* \file main.h
+* \file volume.h
 *
 * \author Victor Avila (avilapa.github.io)
 *
-* \brief Ray tracing in a Weekend - by Peter Shirley.
+* \brief .
 *
 */
-namespace vxt 
+namespace vxt
 {
 
-  class Main : public Application
+  class Texture;
+
+  class ConstantMedium : public Hitable
   {
   public:
-    virtual void init() override;
+    ConstantMedium() {}
+    ConstantMedium(Hitable* p, float d, Texture* a) : boundary_(p), density_(d) { phase_function_ = new Isotropic(a); }
+
+    virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const;
+    virtual bool boundingBox(float t0, float t1, AABB& box) const;
+
+  private:
+    float density_;
+    Material* phase_function_;
+    Hitable* boundary_;
   };
 
 } /* end of vxt namespace */

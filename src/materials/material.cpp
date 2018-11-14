@@ -22,9 +22,10 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../include/material.h"
-#include "../include/ray.h"
-#include "../include/hitable.h"
+#include "../../include/materials/material.h"
+#include "../../include/materials/texture.h"
+#include "../../include/objects/hitable.h"
+#include "../../include/renderer/ray.h"
 
 namespace vxt
 {
@@ -59,40 +60,40 @@ namespace vxt
 
   bool Lambertian::scatter(const Ray& r_in, const Hit hit, vec3& attenuation, Ray& scattered) const
   {
-    vec3 target = hit.p + hit.normal + randomUnitSphere();
-    scattered = Ray(hit.p, target - hit.p);
-    attenuation = albedo;
+    vec3 target = hit.p + hit.n + randomUnitSphere();
+    scattered = Ray(hit.p, target - hit.p, r_in.time());
+    attenuation = albedo->value(hit.uv.x, hit.uv.y, hit.p);
     return true;
   }
 
   bool Metal::scatter(const Ray& r_in, const Hit hit, vec3& attenuation, Ray& scattered) const
   {
-    vec3 reflected = reflect(glm::normalize(r_in.direction()), hit.normal);
-    scattered = Ray(hit.p, reflected + fuzz * randomUnitSphere());
-    attenuation = albedo;
-    return glm::dot(scattered.direction(), hit.normal) > 0.0f;
+    vec3 reflected = reflect(glm::normalize(r_in.direction()), hit.n);
+    scattered = Ray(hit.p, reflected + fuzz * randomUnitSphere(), r_in.time());
+    attenuation = albedo->value(hit.uv.x, hit.uv.y, hit.p);
+    return glm::dot(scattered.direction(), hit.n) > 0.0f;
   }
 
   bool Dielectric::scatter(const Ray& r_in, const Hit hit, vec3& attenuation, Ray& scattered) const
   {
     vec3 outward_normal;
-    vec3 reflected = reflect(r_in.direction(), hit.normal);
+    vec3 reflected = reflect(r_in.direction(), hit.n);
     vec3 refracted;
     float ni_over_nt;
     float reflect_prob;
     float cosine;
     attenuation = vec3(1.0f);
-    if (glm::dot(r_in.direction(), hit.normal) > 0.0f)
+    if (glm::dot(r_in.direction(), hit.n) > 0.0f)
     {
-      outward_normal = -hit.normal;
+      outward_normal = -hit.n;
       ni_over_nt = index_of_refraction;
-      cosine = index_of_refraction * glm::dot(r_in.direction(), hit.normal) / r_in.direction().length();
+      cosine = index_of_refraction * glm::dot(r_in.direction(), hit.n) / r_in.direction().length();
     }
     else
     {
-      outward_normal = hit.normal;
+      outward_normal = hit.n;
       ni_over_nt = 1.0f / index_of_refraction;
-      cosine = -glm::dot(r_in.direction(), hit.normal) / r_in.direction().length();
+      cosine = -glm::dot(r_in.direction(), hit.n) / r_in.direction().length();
     }
     if (refract(r_in.direction(), outward_normal, ni_over_nt, refracted))
     {
@@ -104,13 +105,33 @@ namespace vxt
     }
     if (randomFloat01() < reflect_prob)
     {
-      scattered = Ray(hit.p, reflected);
+      scattered = Ray(hit.p, reflected, r_in.time());
     }
     else
     {
-      scattered = Ray(hit.p, refracted);
+      scattered = Ray(hit.p, refracted, r_in.time());
     }
     return true;
   }
+
+  bool DiffuseLight::scatter(const Ray& r_in, const Hit hit, vec3& attenuation, Ray& scattered) const
+  {
+    return false;
+  }
+
+  vec3 DiffuseLight::emitted(float u, float v, const vec3& p) const
+  {
+    vec3 aaa = emit->value(u, v, p);
+    
+    return aaa;
+  }
+
+  bool Isotropic::scatter(const Ray& r_in, const Hit hit, vec3& attenuation, Ray& scattered) const
+  {
+    scattered = Ray(hit.p, randomUnitSphere());
+    attenuation = albedo->value(hit.uv.x, hit.uv.y, hit.p);
+    return true;
+  }
+
 
 } /* end of vxt namespace */

@@ -22,42 +22,19 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../include/camera.h"
-#include "../include/ray.h"
+#include "../../include/objects/aabb.h"
 
 namespace vxt
 {
 
-  static vec3 randomUnitDisk()
+  AABB::AABB(AABB box0, AABB box1)
   {
-    vec3 p;
-    do 
-    {
-      p = 2.0f * vec3(randomFloat01(), randomFloat01(), 0.0f) - vec3(1, 1, 0);
-    } while (glm::dot(p, p) >= 1.0f);
-    return p;
-  }
-
-  Camera::Camera(vec3 look_from, vec3 look_at, vec3 up, float vfov, float aspect, float aperture, float focus_dist)
-  {
-    lens_radius = aperture / 2.0f;
-    float theta = vfov * 3.14159265359 / 180;
-    float half_height = tan(theta / 2.0f);
-    float half_width = aspect * half_height;
-    origin = look_from;
-    w = glm::normalize(look_from - look_at);
-    u = glm::normalize(glm::cross(up, w));
-    v = glm::cross(w, u);
-    x0y0 = origin - half_width * focus_dist * u - half_height * focus_dist * v - focus_dist * w;
-    axis_x = 2 * half_width * focus_dist * u;
-    axis_y = 2 * half_height * focus_dist * v;
-  }
-
-  Ray Camera::ray(float s, float t)
-  {
-    vec3 rd = lens_radius * randomUnitDisk();
-    vec3 offset = u * rd.x + v * rd.y;
-    return Ray(origin + offset, x0y0 + s * axis_x + t * axis_y - origin - offset);
+    min_ = vec3(ffmin(box0.min_vec().x, box1.min_vec().x),
+      ffmin(box0.min_vec().y, box1.min_vec().y),
+      ffmin(box0.min_vec().z, box1.min_vec().z));
+    max_ = vec3(ffmax(box0.max_vec().x, box1.max_vec().x),
+      ffmax(box0.max_vec().y, box1.max_vec().y),
+      ffmax(box0.max_vec().z, box1.max_vec().z));
   }
 
 } /* end of vxt namespace */

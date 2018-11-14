@@ -24,23 +24,38 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../../include/core/application.h"
+#include "../core/types.h"
 
 /**
-* \file main.h
+* \file camera.h
 *
 * \author Victor Avila (avilapa.github.io)
 *
-* \brief Ray tracing in a Weekend - by Peter Shirley.
+* \brief .
 *
 */
-namespace vxt 
+namespace vxt
 {
 
-  class Main : public Application
+  class Ray;
+
+  class Camera
   {
   public:
-    virtual void init() override;
+    Camera(vec3 look_from, vec3 look_at, vec3 up, 
+		   float vfov, float aspect, float aperture, float focus_dist,
+		   float t0, float t1);
+    
+	Ray ray(float s, float t);
+
+  private:
+    vec3 origin;
+    vec3 x0y0;
+    vec3 axis_x;
+    vec3 axis_y;
+    vec3 u, v, w;
+    float lens_radius;
+	float time0, time1;
   };
 
 } /* end of vxt namespace */

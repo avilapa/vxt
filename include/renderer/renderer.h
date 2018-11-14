@@ -24,23 +24,48 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../../include/core/application.h"
+#include "scene.h"
+#include <mutex>
 
 /**
-* \file main.h
+* \file renderer.h
 *
 * \author Victor Avila (avilapa.github.io)
 *
-* \brief Ray tracing in a Weekend - by Peter Shirley.
+* \brief Renderer class.
 *
 */
-namespace vxt 
+namespace vxt
 {
 
-  class Main : public Application
+  class Ray;
+
+  class Renderer
   {
   public:
-    virtual void init() override;
+    Renderer(uint32 width, uint32 height, uint32 samples_per_pixel);
+    ~Renderer();
+
+    void render(Scene* scene, Background* bg, Camera* camera, const char* output_file);
+    void render(Scene* scene, Background* bg, Camera* camera, const char* output_file, uint32 num_threads);
+
+    struct Tile
+    {
+      uint32 x, y, w, h;
+    };
+
+  private:
+    void renderTile(Scene* scene, Background* bg, Camera* camera);
+    vec3 renderPixel(Scene* scene, Background* bg, Camera* camera, uint32 i, uint32 j);
+    vec3 compute(const Ray& r, Hitable* world, Background* bg, int depth);
+
+  private:
+    uint32 width_, height_, spp_;
+    Color* pixels_;
+
+    std::vector<Tile> tiles_;
+    std::mutex tile_mutex_;
+
   };
 
 } /* end of vxt namespace */

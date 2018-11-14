@@ -24,23 +24,31 @@
 // SOFTWARE.
 // ----------------------------------------------------------------------------------------
 
-#include "../../include/core/application.h"
+#include "hitable.h"
 
 /**
-* \file main.h
+* \file box.h
 *
 * \author Victor Avila (avilapa.github.io)
 *
-* \brief Ray tracing in a Weekend - by Peter Shirley.
+* \brief .
 *
 */
-namespace vxt 
+namespace vxt
 {
 
-  class Main : public Application
+  class Box : public Hitable
   {
   public:
-    virtual void init() override;
+    Box() {}
+    Box(const vec3& p0, const vec3& p1, Material* m);
+
+    virtual bool hit(const Ray& r, float t_min, float t_max, Hit& h) const;
+    virtual bool boundingBox(float t0, float t1, AABB& box) const;
+
+  private:
+    vec3 p_min_, p_max_;
+    Hitable *list_ptr_;
   };
 
 } /* end of vxt namespace */
