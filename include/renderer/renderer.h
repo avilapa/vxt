@@ -49,23 +49,14 @@ namespace vxt
     void render(Scene* scene, Background* bg, Camera* camera, const char* output_file);
     void render(Scene* scene, Background* bg, Camera* camera, const char* output_file, uint32 num_threads);
 
-    struct Tile
-    {
-      uint32 x, y, w, h;
-    };
-
   private:
-    void renderTile(Scene* scene, Background* bg, Camera* camera);
+    void renderTile(Scene* scene, Background* bg, Camera* camera, const uvec4& tile);
     vec3 renderPixel(Scene* scene, Background* bg, Camera* camera, uint32 i, uint32 j);
     vec3 compute(const Ray& r, Hitable* world, Background* bg, int depth);
 
   private:
     uint32 width_, height_, spp_;
     Color* pixels_;
-
-    std::vector<Tile> tiles_;
-    std::mutex tile_mutex_;
-
   };
 
 } /* end of vxt namespace */

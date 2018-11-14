@@ -33,11 +33,12 @@ namespace vxt
 
   void Main::init()
   {
-    constexpr uint32 width = 800;
-    constexpr uint32 height = 800;
-    constexpr uint32 samples_per_pixel = 100;
-    constexpr uint32 num_threads = 4;
+    constexpr uint32 width = 400;
+    constexpr uint32 height = 400;
+    constexpr uint32 samples_per_pixel = 500;
+    constexpr uint32 num_threads = 8;
 
+    // Note: Use Background for lit scenes, and GradientBackground for unlit scenes!
     Renderer renderer(width, height, samples_per_pixel);
     renderer.render(new CornellBoxScene(), new Background(), CornellBoxScene::camera(width, height), "output.bmp", num_threads);
 

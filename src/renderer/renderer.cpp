@@ -78,7 +78,8 @@ namespace vxt
 
   void Renderer::render(Scene* scene, Background* bg, Camera* camera, const char* output_file, uint32 num_threads)
   {
-    // Divide image in tiles based on number of threads
+    // Launch threads to render tiles of the image
+    std::vector<std::thread> threads;
     uint32 tile_height = height_ / num_threads;
     for (uint32 i = 0, sum = 0; i < num_threads; ++i)
     {
@@ -89,14 +90,7 @@ namespace vxt
         tile_height = height_ - tile_height_pos;
       }
 
-      tiles_.push_back(Tile{ 0, tile_height_pos, width_, tile_height });
-    }
-
-    // Launch threads to render tiles
-    std::vector<std::thread> threads;
-    for (uint32 i = 0; i < num_threads; i++)
-    {
-      threads.push_back(std::thread(&Renderer::renderTile, this, scene, bg, camera));
+      threads.push_back(std::thread(&Renderer::renderTile, this, scene, bg, camera, uvec4(0, tile_height_pos, width_, tile_height)));
     }
 
     printf("\nRendering %d x %d image at %d samples per pixel.", width_, height_, spp_);
@@ -116,23 +110,11 @@ namespace vxt
     WriteBitmap(output_file, width_, height_, bytes_per_pixel, reinterpret_cast<const uint8*>(pixels_));
   }
 
-  void Renderer::renderTile(Scene* scene, Background* bg, Camera* camera)
+  void Renderer::renderTile(Scene* scene, Background* bg, Camera* camera, const uvec4& tile)
   {
-    Tile tile;
-    uint32 tile_id;
+    for (uint32 j = tile.y; j < tile.y + tile.w; ++j)
     {
-      std::lock_guard<std::mutex> lock(tile_mutex_);
-
-      // Get tile
-      tile = tiles_.back();
-      tile_id = tiles_.size();
-      tiles_.pop_back();
-    }
-
-    // Render Tile
-    for (uint32 j = tile.y; j < tile.y + tile.h; ++j)
-    {
-      for (uint32 i = tile.x; i < tile.x + tile.w; ++i)
+      for (uint32 i = tile.x; i < tile.x + tile.z; ++i)
       {
         vec3 col = renderPixel(scene, bg, camera, i, j);
 

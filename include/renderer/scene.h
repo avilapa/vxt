@@ -71,14 +71,15 @@ namespace vxt
     static Camera* camera(uint32 w, uint32 h);\
   };
 
-  SCENE(SampleScene);
-  SCENE(RandomScene);
+  SCENE(RandomScene);         // Ray Tracing in One Weekend final scene
+  SCENE(FinalScene);          // Ray Tracing the Next Week final scene
   SCENE(PerlinScene);
   SCENE(EarthScene);
   SCENE(ThreeSpheresScene);
   SCENE(SampleLightScene);
   SCENE(CornellBoxScene);
   SCENE(CornellSmokeScene);
-  SCENE(FinalScene);
+
+#undef SCENE
 
 } /* end of vxt namespace */

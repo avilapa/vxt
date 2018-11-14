@@ -26,23 +26,17 @@
 #include "../../include/objects/aabb.h"
 #include "../../include/renderer/ray.h"
 
-#include <iostream>
-
 namespace vxt
 {
 
   bool ConstantMedium::hit(const Ray& r, float t_min, float t_max, Hit& h) const
   {
-    bool db = (randomFloat01() < 0.00001f); // ???
-    db = false;
     Hit h1, h2;
     
     if (boundary_->hit(r, -FLT_MAX, FLT_MAX, h1))
     {
       if (boundary_->hit(r, h1.t + 0.0001f, FLT_MAX, h2))
       {
-        if (db) std::cerr << "\nt0 t1 " << h1.t << " " << h2.t << "\n";
-
         if (h1.t < t_min)
         {
           h1.t = t_min;
@@ -63,16 +57,8 @@ namespace vxt
         float hit_distance = - (1 / density_) * log(randomFloat01());
         if (hit_distance < distance_inside_boundary) 
         {
-          if (db) std::cerr << "hit_distance = " << hit_distance << "\n";
-
           h.t = h1.t + hit_distance / r.direction().length();
-
-          if (db) std::cerr << "h.t = " << h.t << "\n";
-
           h.p = r.point_param(h.t);
-
-          if (db) std::cerr << "h.p = " << h.p.x << " " << h.p.y << " " << h.p.z << "\n";
-
           h.n = vec3(1, 0, 0);  // Arbitrary
           h.mat = phase_function_;
           return true;

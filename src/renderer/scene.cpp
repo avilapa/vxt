@@ -51,13 +51,6 @@ namespace vxt
     world_->add(hitable);
   }
 
-  SampleScene::SampleScene()
-  {
-    Texture *perlin = new NoiseTexture(2.0f);
-    world_->add(new Sphere(vec3(0, -1001.75, 0), 1000, new Lambertian(new ConstantTexture(vec3(0.8f)))));
-    world_->add(new Sphere(vec3(0, 0.25, 0), 2, new Lambertian(perlin)));
-  }
-
   RandomScene::RandomScene()
   {
     Texture *checker = new CheckerTexture(new ConstantTexture(vec3(0.2, 0.3, 0.1)), new ConstantTexture(vec3(0.9)));
