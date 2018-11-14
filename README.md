@@ -1,6 +1,6 @@
 ![Cornell](/assets/textures/readme/output_cornell_smoke_scene_500spp.jpg)
 
-_version 0.2.0_
+_version 0.2.1_
 
 # What is vxt?
 
@@ -28,6 +28,38 @@ This project uses [GENie.lua](https://github.com/bkaradzic/GENie) to create the 
 	
 The solution will be located in _project/vs/vxt-Raytracer.sln_.
   
+# API
+
+```c++
+#include "main.h"
+#include "../../include/renderer/renderer.h"
+
+VXR_DEFINE_APP_MAIN(vxt::Main)
+
+namespace vxt
+{
+
+  void Main::init()
+  {
+    constexpr uint32 width = 400;
+    constexpr uint32 height = 400;
+    constexpr uint32 samples_per_pixel = 500;
+    constexpr uint32 num_threads = 8;
+
+    // Note: Use Background for lit scenes, and GradientBackground for unlit scenes!
+    Renderer renderer(width, height, samples_per_pixel);
+    renderer.render(new CornellBoxScene(), 
+		    new Background(), 
+		    CornellBoxScene::camera(width, height), 
+		    "output.bmp", num_threads);
+
+    exit_ = true;
+    Application::init();
+  }
+
+} /* end of vxt namespace */
+```
+
 # Dependencies
 
 - [glm](https://github.com/g-truc/glm)
