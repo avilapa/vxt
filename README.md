@@ -1,4 +1,4 @@
-![Cornell](/assets/textures/readme/output_cornell_smoke_scene_500spp.jpg)
+![Samples](/assets/textures/readme/raytracing_collage.jpg)
 
 _version 0.2.1_
 
@@ -77,7 +77,7 @@ Web/Blog/Portfolio: https://avilapa.github.io/portfolio
 
 # Gallery
 
-![Final](/assets/textures/readme/output_final_scene_1000spp.jpg)
+![Final](/assets/textures/readme/output_final_10000spp.jpg)
 ![Cornell](/assets/textures/readme/output_cornell_smoke_scene_500spp.jpg)
 ![Lights](/assets/textures/readme/output_light_250spp.jpg)
 ![Random](/assets/textures/readme/output_final_100spp.jpg)
